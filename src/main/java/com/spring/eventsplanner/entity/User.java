@@ -2,9 +2,7 @@ package com.spring.eventsplanner.entity;
 
 import javax.persistence.*;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Table(name = "user")
