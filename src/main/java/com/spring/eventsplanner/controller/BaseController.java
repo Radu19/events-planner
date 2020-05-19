@@ -13,9 +13,9 @@ public class BaseController {
 		return "index";
 	}
 
-	@GetMapping("/events")
+	@GetMapping("/administration")
 	public String showHome() {
-		return "home";
+		return "administration-page";
 	}
 
 }
