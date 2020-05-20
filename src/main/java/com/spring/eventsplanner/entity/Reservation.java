@@ -2,11 +2,15 @@ package com.spring.eventsplanner.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -48,6 +52,21 @@ public class Reservation {
 	@Column(name="payment_status")
 	private String paymentStatus;
 	
+	@ManyToOne(fetch = FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.MERGE, 
+			CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinColumn(name="user_id")
+	private User user;
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.MERGE, 
+			CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinColumn(name="customer_id")
+	private Customer customer;
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.MERGE, 
+			CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinColumn(name="location_id")
+	private Location location;
+	
 	public Reservation() {}
 
 	public Reservation(LocalDate reservationDate, String ceremonyType, int nrGuests, String musicIncluded,
@@ -62,6 +81,24 @@ public class Reservation {
 		this.details = details;
 		this.paymentMethod = paymentMethod;
 		this.paymentStatus = paymentStatus;
+	}
+
+	public Reservation(LocalDate reservationDate, String ceremonyType, int nrGuests, String musicIncluded,
+			String kitchenIncluded, String cuisine, String details, String paymentMethod, String paymentStatus,
+			User user, Customer customer, Location location) {
+		super();
+		this.reservationDate = reservationDate;
+		this.ceremonyType = ceremonyType;
+		this.nrGuests = nrGuests;
+		this.musicIncluded = musicIncluded;
+		this.kitchenIncluded = kitchenIncluded;
+		this.cuisine = cuisine;
+		this.details = details;
+		this.paymentMethod = paymentMethod;
+		this.paymentStatus = paymentStatus;
+		this.user = user;
+		this.customer = customer;
+		this.location = location;
 	}
 
 	public int getId() {
@@ -143,15 +180,40 @@ public class Reservation {
 	public void setPaymentStatus(String paymentStatus) {
 		this.paymentStatus = paymentStatus;
 	}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
 
 	@Override
 	public String toString() {
 		return "Reservation [id=" + id + ", reservationDate=" + reservationDate + ", ceremonyType=" + ceremonyType
 				+ ", nrGuests=" + nrGuests + ", musicIncluded=" + musicIncluded + ", kitchenIncluded=" + kitchenIncluded
 				+ ", cuisine=" + cuisine + ", details=" + details + ", paymentMethod=" + paymentMethod
-				+ ", paymentStatus=" + paymentStatus + "]";
+				+ ", paymentStatus=" + paymentStatus + ", user=" + user + ", customer=" + customer + ", location="
+				+ location + "]";
 	}
-	
-	
+
+
 	
 }

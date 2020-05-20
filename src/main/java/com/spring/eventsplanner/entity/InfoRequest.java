@@ -2,11 +2,15 @@ package com.spring.eventsplanner.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -39,6 +43,16 @@ public class InfoRequest {
 	@Column(name="message")
 	private String message;
 	
+	@ManyToOne(fetch = FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.MERGE, 
+			CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinColumn(name="customer_id")
+	private Customer customer;
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.MERGE, 
+			CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinColumn(name="location_id")
+	private Location location;
+	
 	public InfoRequest() {}
 
 	public InfoRequest(String name, String email, int phoneNr, LocalDate eventDate, int nrGuests, String message) {
@@ -49,6 +63,19 @@ public class InfoRequest {
 		this.eventDate = eventDate;
 		this.nrGuests = nrGuests;
 		this.message = message;
+	}
+	
+	public InfoRequest(String name, String email, int phoneNr, LocalDate eventDate, int nrGuests, String message,
+			Customer customer, Location location) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.phoneNr = phoneNr;
+		this.eventDate = eventDate;
+		this.nrGuests = nrGuests;
+		this.message = message;
+		this.customer = customer;
+		this.location = location;
 	}
 
 	public int getId() {
@@ -106,12 +133,31 @@ public class InfoRequest {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
 
 	@Override
 	public String toString() {
 		return "InfoRequest [id=" + id + ", name=" + name + ", email=" + email + ", phoneNr=" + phoneNr + ", eventDate="
-				+ eventDate + ", nrGuests=" + nrGuests + ", message=" + message + "]";
+				+ eventDate + ", nrGuests=" + nrGuests + ", message=" + message + ", customer=" + customer
+				+ ", location=" + location + "]";
 	}
+
+	
 	
 	
 }

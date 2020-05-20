@@ -1,8 +1,22 @@
 package com.spring.eventsplanner.entity;
 
-import javax.persistence.*;
-
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "user")
@@ -34,6 +48,36 @@ public class User {
 	inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Collection<Role> roles;
 	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="user",
+			cascade= {CascadeType.PERSIST, CascadeType.MERGE, 
+					CascadeType.DETACH, CascadeType.REFRESH})
+	private List<Reservation> reservations;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="user",
+			cascade= {CascadeType.PERSIST, CascadeType.MERGE, 
+					CascadeType.DETACH, CascadeType.REFRESH})
+	private List<Meeting> meetings;
+	
+	public void add(Reservation tempReservation) {
+			
+			if(reservations == null) {
+				reservations = new ArrayList<>();
+			}
+			
+			reservations.add(tempReservation);
+			tempReservation.setUser(this);
+	}
+	
+	public void add(Meeting tempMeeting) {
+			
+			if(meetings == null) {
+				meetings = new ArrayList<>();
+			}
+			
+			meetings.add(tempMeeting);
+			tempMeeting.setUser(this);
+	}
+	
 
 	public User() {
 	}
@@ -56,6 +100,19 @@ public class User {
 		this.roles = roles;
 	}
 	
+	public User(String userName, String password, String firstName, String lastName, String email,
+			Collection<Role> roles, List<Reservation> reservations, List<Meeting> meetings) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.roles = roles;
+		this.reservations = reservations;
+		this.meetings = meetings;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -110,6 +167,22 @@ public class User {
 
 	public void setRoles(Collection<Role> roles) {
 		this.roles = roles;
+	}
+
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
+
+	public List<Meeting> getMeetings() {
+		return meetings;
+	}
+
+	public void setMeetings(List<Meeting> meetings) {
+		this.meetings = meetings;
 	}
 
 	@Override
