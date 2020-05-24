@@ -19,13 +19,19 @@
 <div id="wrapper" class="active">
 	<div id="sidebar-wrapper">
 		<ul id="sidebar_menu" class="sidebar-nav">
-			 <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu <i class="fas fa-bars margin-left"></i></a></li>
+			 <li class="sidebar-brand"><a href="#">DreamEvents</a></li>
 		</ul>
 		  <ul class="sidebar-nav" id="sidebar">     
-			<li><a>Link1 <i class="fa fa-address-book" aria-hidden="true"></i></a></li>
-			<li><a>link2<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
-			<form action="#" th:action="@{/logout}" method="POST">
-				<input type="submit" value="Logout" class="btn btn-outline-secondary" />
+			<li><a href="#">Locations</a></li>
+			<li><a href="#">Reservations</a></li>
+			<li><a href="#">Info-request</a></li>
+			<li><a href="#">Meetings</a></li>
+			<li><a href="#">Customers</a></li>
+			
+			<form action="#" th:action="@{/logout}" method="POST" class="justify-content-center">
+				<div class="fixed-bottom">
+					<button type="submit" class="btn btn-outline-secondary btn-sm">Logout</button>
+				</div>
 			</form>
 		  </ul>
 		</div>
@@ -58,12 +64,7 @@
 		</div>
 	</div>
 
-	<script>
-		$("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("active");
-	});
-	</script>
+	
 </body>
 
 </html>

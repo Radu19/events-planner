@@ -69,10 +69,11 @@
 .sidebar-nav li {
   line-height: 40px;
   text-indent: 20px;
+  font-size: small;
 }
 
 .sidebar-nav li a {
-  color: #999999;
+  color: #FED136;
   display: block;
   text-decoration: none;
 }
@@ -103,16 +104,15 @@
   background: none;
 }
 
-.margin-left{
-    margin-left: 35px;
+.nav-link-container{
+  width: 50%;
 }
 
-.sub_icon
-{
-    float:right;
-   padding-right: 65px;
-   padding-top:10px;
+.fixed-bottom{
+  margin-bottom: 1.5rem;
+  margin-left: 2.2rem;
 }
+
 .content-header {
   height: 65px;
   line-height: 65px;
