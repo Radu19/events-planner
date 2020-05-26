@@ -15,27 +15,7 @@
 </head>
 
 <body>
-
-<div id="wrapper" class="active">
-	<div id="sidebar-wrapper">
-		<ul id="sidebar_menu" class="sidebar-nav">
-			 <li class="sidebar-brand"><a href="#">DreamEvents</a></li>
-		</ul>
-		  <ul class="sidebar-nav" id="sidebar">     
-			<li><a href="#">Locations</a></li>
-			<li><a href="#">Reservations</a></li>
-			<li><a href="#">Info-request</a></li>
-			<li><a href="#">Meetings</a></li>
-			<li><a href="#">Customers</a></li>
-			
-			<form action="#" th:action="@{/logout}" method="POST" class="justify-content-center">
-				<div class="fixed-bottom">
-					<button type="submit" class="btn btn-outline-secondary btn-sm">Logout</button>
-				</div>
-			</form>
-		  </ul>
-		</div>
-	</div>
+	<div th:insert="~{fragments/fragments :: navbar}"></div>
 	<div id="page-content-wrapper">
 		<div class="container">
 			<h1>Administration</h1>
@@ -60,11 +40,9 @@
 					</tr>
 				</tbody>
 			</table>
-			
+
 		</div>
 	</div>
-
-	
 </body>
 
 </html>

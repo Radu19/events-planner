@@ -61,6 +61,9 @@ public class Location {
 	@Column(name="description")
 	private String description;
 	
+	@Column(name="img")
+	private String img;
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="location",
 			cascade= {CascadeType.PERSIST, CascadeType.MERGE, 
 					CascadeType.DETACH, CascadeType.REFRESH})
@@ -110,7 +113,7 @@ public class Location {
 
 	public Location(String name, String address, int maxGuests, int minGuests, double pricePerGuest, String ownKitchen,
 			String ownMusic, String ceremonyTypes, String cuisine, String modifyMenu, String specialMenu,
-			String paymentMethod, String description) {
+			String paymentMethod, String description, String img) {
 		super();
 		this.name = name;
 		this.address = address;
@@ -125,11 +128,12 @@ public class Location {
 		this.specialMenu = specialMenu;
 		this.paymentMethod = paymentMethod;
 		this.description = description;
+		this.img = img;
 	}
 	
 	public Location(String name, String address, int maxGuests, int minGuests, double pricePerGuest, String ownKitchen,
 			String ownMusic, String ceremonyTypes, String cuisine, String modifyMenu, String specialMenu,
-			String paymentMethod, String description, List<Reservation> reservations, List<Meeting> meetings,
+			String paymentMethod, String description, String img, List<Reservation> reservations, List<Meeting> meetings,
 			List<InfoRequest> infoRequests) {
 		super();
 		this.name = name;
@@ -145,6 +149,7 @@ public class Location {
 		this.specialMenu = specialMenu;
 		this.paymentMethod = paymentMethod;
 		this.description = description;
+		this.img = img;
 		this.reservations = reservations;
 		this.meetings = meetings;
 		this.infoRequests = infoRequests;
@@ -286,15 +291,25 @@ public class Location {
 		this.infoRequests = infoRequests;
 	}
 
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
 	@Override
 	public String toString() {
 		return "Location [id=" + id + ", name=" + name + ", address=" + address + ", maxGuests=" + maxGuests
 				+ ", minGuests=" + minGuests + ", pricePerGuest=" + pricePerGuest + ", ownKitchen=" + ownKitchen
 				+ ", ownMusic=" + ownMusic + ", ceremonyTypes=" + ceremonyTypes + ", cuisine=" + cuisine
 				+ ", modifyMenu=" + modifyMenu + ", specialMenu=" + specialMenu + ", paymentMethod=" + paymentMethod
-				+ ", description=" + description + ", reservations=" + reservations + ", meetings=" + meetings
-				+ ", infoRequests=" + infoRequests + "]";
+				+ ", description=" + description + ", img=" + img + ", reservations=" + reservations + ", meetings="
+				+ meetings + ", infoRequests=" + infoRequests + "]";
 	}
+
+	
 
 	
 }
