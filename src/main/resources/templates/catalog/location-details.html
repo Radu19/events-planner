@@ -17,10 +17,155 @@
     <link th:href="@{css/bootstrap-styles.css}" rel="stylesheet" />
 </head>
 <body id="page-top">
+<div th:insert="~{fragments/fragments :: main-navbar}"></div>
+
+<div class="container-fluid container-margin-top">
+    <div class="row">
+        <div class="col-md-4 pt-5">
+            <img th:src="@{img/locations/{image}(image=${location.img})}" alt="location photo" class="img-thumbnail img-fluid">
+       </div>
+       <div class="col-md-7 ml-4">
+        <h2>[[${location.name}]]</h2>
+        <p>[[${location.address}]]</p>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card bg-light-yellow mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Maximum capacity</div>
+                    <div class="card-body">
+                      <h5 class="card-title">[[${location.maxGuests}]] guests</h5>
+                      <p class="card-text">The maximum number of guests may differ depending on the type of celebration</p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-light-yellow mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Minimum capacity</div>
+                    <div class="card-body">
+                      <h5 class="card-title">[[${location.minGuests}]] guests</h5>
+                      <p class="card-text">The minimum number of guests may differ depending on the type of celebration</p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-light-yellow mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Price</div>
+                    <div class="card-body">
+                      <h5 class="card-title">€[[${location.pricePerGuest}]] / guest</h5>
+                      <p class="card-text">Get a discount depending on the time of the year that you are celebrating in</p>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <h5>Description</h5>
+        <p>[[${location.description}]]</p>
+       </div>
+    </div>
+    <div class="py-5 my-4">
+        <h4 class="ml-2">Frequently Asked Questions</h4>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Question</th>
+                <th scope="col">Answer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Do you have your own kitchen?</td>
+                <td>[[${location.ownKitchen}]]</td>
+              </tr>
+              <tr>
+                <td>What types of celebrations we can have?</td>
+                <td>[[${location.ceremonyTypes}]]</td>
+              </tr>
+              <tr>
+                <td>Do you have your own music?</td>
+                <td>[[${location.ownMusic}]]</td>
+              </tr>
+              <tr>
+                <td>What types of cuisine do you have?</td>
+                <td>[[${location.cuisine}]]</td>
+              </tr>
+              <tr>
+                <td>Can we modify the menu?</td>
+                <td>[[${location.modifyMenu}]]</td>
+              </tr>
+              <tr>
+                <td>Do you have special menues?</td>
+                <td>[[${location.specialMenu}]]</td>
+              </tr>
+              <tr>
+                <td>What payment methods do you accept?</td>
+                <td>[[${location.paymentMethod}]]</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <img th:src="@{/img/illustrations/consulting.png}" alt="illustration" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+            <div class="container">
+                <form method="POST">
+                    <div>
+                        <h4>Request more info</h4>
+                        <hr>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="First Name">
+                            <input type="text" class="form-control" placeholder="Last Name">
+                          </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">@</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Email" >
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-address-card"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Address" >
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Phone" >
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-calendar"></i></i></span>
+                            </div>
+                            <input type="text" id="datepicker1" class="form-control" th:value="${#temporals.format(dateBirth, 'yyyy-MM-dd')}" 
+                             placeholder="Event date" autocomplete="off">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-chair"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Nr. of guests" >
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Message"></textarea>
+                        </div>
+                        <button class="btn btn-primary btn-lg" type="submit">Send</button>
+                    </div>   
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div th:insert="~{fragments/fragments :: footer}"></div>
-
-
-<div th:insert="~{fragments/fragments :: footer}"></>
 <!-- Bootstrap core JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>

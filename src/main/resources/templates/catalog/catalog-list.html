@@ -19,19 +19,26 @@
 <body id="page-top">
 <div th:insert="~{fragments/fragments :: main-navbar}"></div>
 
-<div class="container container-margin-top">
-    <div class="row">
+<div class="container-fluid container-margin-top">
+  <div class="container">
+    <div class="text-center">
+      <h2>Dream Locations</h2>
+      <p><i>Don't be afraid to dream about your perfect moment.</i></p>
+    </div>
+    <hr>
+  </div>
+    <div class="row mx-5">
         <div class="col-md-4 card-margin-top" th:each="location : ${locations}">
             <div class="flip-card border border-primary">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
-                    <img th:src="@{img/locations/loc.jpg}" alt="Avatar" style="width:300px;height:300px;">
+                    <img th:src="@{img/locations/{image}(image=${location.img})}" alt="location-photo" style="width:400px;height:300px;">
                   </div>
                   <div class="flip-card-back">
                     <h3 class="mt-5">[[${location.name}]]</h3> 
                     <p class="px-5">[[${location.address}]]</p> 
                     <div class="fixed-bottom">
-                        <a href="#" class="btn btn-primary">Details</a>
+                        <a th:href="@{/catalog/details(locationId=${location.id})}" class="btn btn-primary">Details</a>
                     </div>
                   </div>
                 </div>
