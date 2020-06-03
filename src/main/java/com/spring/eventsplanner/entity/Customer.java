@@ -47,11 +47,6 @@ public class Customer {
 					CascadeType.DETACH, CascadeType.REFRESH})
 	private List<Reservation> reservations;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="customer",
-			cascade= {CascadeType.PERSIST, CascadeType.MERGE, 
-					CascadeType.DETACH, CascadeType.REFRESH})
-	private List<InfoRequest> infoRequests;
-	
 	public void add(Reservation tempReservation) {
 		
 		if(reservations == null) {
@@ -70,16 +65,6 @@ public class Customer {
 			
 			meetings.add(tempMeeting);
 			tempMeeting.setCustomer(this);
-	}
-	
-	public void add(InfoRequest tempInfoRequest) {
-		
-		if(infoRequests == null) {
-			infoRequests = new ArrayList<>();
-		}
-		
-		infoRequests.add(tempInfoRequest);
-		tempInfoRequest.setCustomer(this);
 	}
 
 	public Customer() {}
@@ -103,7 +88,6 @@ public class Customer {
 		this.address = address;
 		this.meetings = meetings;
 		this.reservations = reservations;
-		this.infoRequests = infoRequests;
 	}
 
 	public int getId() {
@@ -170,19 +154,11 @@ public class Customer {
 		this.reservations = reservations;
 	}
 
-	public List<InfoRequest> getInfoRequests() {
-		return infoRequests;
-	}
-
-	public void setInfoRequests(List<InfoRequest> infoRequests) {
-		this.infoRequests = infoRequests;
-	}
-
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNr=" + phoneNr
 				+ ", email=" + email + ", address=" + address + ", meetings=" + meetings + ", reservations="
-				+ reservations + ", infoRequests=" + infoRequests + "]";
+				+ reservations + "]";
 	}
 	
 	

@@ -24,9 +24,6 @@ public class InfoRequest {
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="name")
-	private String name;
-	
 	@Column(name="email")
 	private String email;
 	
@@ -45,11 +42,6 @@ public class InfoRequest {
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.MERGE, 
 			CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name="customer_id")
-	private Customer customer;
-	
-	@ManyToOne(fetch = FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.MERGE, 
-			CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name="location_id")
 	private Location location;
 	
@@ -57,7 +49,6 @@ public class InfoRequest {
 
 	public InfoRequest(String name, String email, int phoneNr, LocalDate eventDate, int nrGuests, String message) {
 		super();
-		this.name = name;
 		this.email = email;
 		this.phoneNr = phoneNr;
 		this.eventDate = eventDate;
@@ -68,13 +59,11 @@ public class InfoRequest {
 	public InfoRequest(String name, String email, int phoneNr, LocalDate eventDate, int nrGuests, String message,
 			Customer customer, Location location) {
 		super();
-		this.name = name;
 		this.email = email;
 		this.phoneNr = phoneNr;
 		this.eventDate = eventDate;
 		this.nrGuests = nrGuests;
 		this.message = message;
-		this.customer = customer;
 		this.location = location;
 	}
 
@@ -84,14 +73,6 @@ public class InfoRequest {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getEmail() {
@@ -134,14 +115,6 @@ public class InfoRequest {
 		this.message = message;
 	}
 	
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
 	public Location getLocation() {
 		return location;
 	}
@@ -152,9 +125,8 @@ public class InfoRequest {
 
 	@Override
 	public String toString() {
-		return "InfoRequest [id=" + id + ", name=" + name + ", email=" + email + ", phoneNr=" + phoneNr + ", eventDate="
-				+ eventDate + ", nrGuests=" + nrGuests + ", message=" + message + ", customer=" + customer
-				+ ", location=" + location + "]";
+		return "InfoRequest [id=" + id + ", email=" + email + ", phoneNr=" + phoneNr + ", eventDate="
+				+ eventDate + ", nrGuests=" + nrGuests + ", message=" + message + ", location=" + location + "]";
 	}
 
 	
