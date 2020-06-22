@@ -12,7 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import com.spring.eventsplanner.entity.User;
+import com.spring.eventsplanner.model.User;
 import com.spring.eventsplanner.service.UserService;
 
 
@@ -42,7 +42,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		session.setAttribute("user", theUser);
 		
 		// forward to home page
-		response.sendRedirect(request.getContextPath() + "/administration");
+		response.sendRedirect(request.getContextPath() + "/administration-dashboard");
 	}
 
 }

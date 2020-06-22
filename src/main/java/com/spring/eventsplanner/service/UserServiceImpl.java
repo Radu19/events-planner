@@ -17,9 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.eventsplanner.dao.RoleDao;
 import com.spring.eventsplanner.dao.UserDao;
-import com.spring.eventsplanner.entity.Role;
-import com.spring.eventsplanner.entity.User;
-import com.spring.eventsplanner.user.CrmUser;
+import com.spring.eventsplanner.model.CrmUser;
+import com.spring.eventsplanner.model.Role;
+import com.spring.eventsplanner.model.User;
 
 
 @Service

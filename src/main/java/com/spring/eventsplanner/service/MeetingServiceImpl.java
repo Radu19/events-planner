@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.eventsplanner.dao.MeetingRepository;
-import com.spring.eventsplanner.entity.Meeting;
+import com.spring.eventsplanner.model.Meeting;
 
 @Service
 public class MeetingServiceImpl implements MeetingService {

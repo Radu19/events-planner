@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.eventsplanner.dao.InfoRequestRepository;
-import com.spring.eventsplanner.entity.InfoRequest;
+import com.spring.eventsplanner.model.InfoRequest;
 
 @Service
 public class InfoRequestServiceImpl implements InfoRequestService {

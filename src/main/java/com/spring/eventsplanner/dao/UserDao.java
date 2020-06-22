@@ -2,7 +2,7 @@ package com.spring.eventsplanner.dao;
 
 import java.util.List;
 
-import com.spring.eventsplanner.entity.User;
+import com.spring.eventsplanner.model.User;
 
 
 public interface UserDao {

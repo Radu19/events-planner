@@ -1,6 +1,6 @@
 package com.spring.eventsplanner.dao;
 
-import com.spring.eventsplanner.entity.Role;
+import com.spring.eventsplanner.model.Role;
 
 public interface RoleDao {
 

@@ -1,4 +1,4 @@
-package com.spring.eventsplanner.entity;
+package com.spring.eventsplanner.model;
 
 import java.time.LocalDateTime;
 

@@ -13,7 +13,7 @@ public class BaseController {
 		return "index";
 	}
 
-	@GetMapping("/administration")
+	@GetMapping("/administration-dashboard")
 	public String showHome() {
 		return "administration-page";
 	}

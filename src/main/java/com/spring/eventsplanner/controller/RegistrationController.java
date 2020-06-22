@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.spring.eventsplanner.entity.User;
+import com.spring.eventsplanner.model.CrmUser;
+import com.spring.eventsplanner.model.User;
 import com.spring.eventsplanner.service.UserService;
-import com.spring.eventsplanner.user.CrmUser;
 
 
 @Controller
@@ -38,7 +38,7 @@ public class RegistrationController {
 		dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
 	}	
 	
-	@GetMapping("/showRegistrationForm")
+	@GetMapping("/form")
 	public String showMyLoginPage(Model theModel) {
 		
 		theModel.addAttribute("crmUser", new CrmUser());

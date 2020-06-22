@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.spring.eventsplanner.entity.Location;
+import com.spring.eventsplanner.model.Location;
 import com.spring.eventsplanner.service.LocationService;
 
 @Controller

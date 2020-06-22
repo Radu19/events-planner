@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.eventsplanner.dao.CustomerRepository;
-import com.spring.eventsplanner.entity.Customer;
+import com.spring.eventsplanner.model.Customer;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {

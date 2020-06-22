@@ -13,7 +13,7 @@
 	<artifactId>events-planner</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>rentalcar</name>
-	<description>Spring Boot projects for event panning</description>
+	<description>Spring Boot project for event panning</description>
 
 	<properties>
 		<java.version>1.8</java.version>

@@ -2,7 +2,7 @@ package com.spring.eventsplanner.service;
 
 import java.util.List;
 
-import com.spring.eventsplanner.entity.Location;
+import com.spring.eventsplanner.model.Location;
 
 
 public interface LocationService {

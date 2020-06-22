@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-import com.spring.eventsplanner.entity.User;
-import com.spring.eventsplanner.user.CrmUser;
+import com.spring.eventsplanner.model.CrmUser;
+import com.spring.eventsplanner.model.User;
 
 public interface UserService extends UserDetailsService {
 

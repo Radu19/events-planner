@@ -42,7 +42,7 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 //			.antMatchers("/systems/**").hasRole("ADMIN")
 			.and()
 			.formLogin()
-				.loginPage("/login")
+				.loginPage("/administration")
 				.loginProcessingUrl("/authenticateTheUser")
 				.successHandler(customAuthenticationSuccessHandler)
 				.permitAll()

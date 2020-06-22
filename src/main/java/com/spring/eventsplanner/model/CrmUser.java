@@ -1,4 +1,4 @@
-package com.spring.eventsplanner.user;
+package com.spring.eventsplanner.model;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

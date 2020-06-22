@@ -2,7 +2,7 @@ package com.spring.eventsplanner.service;
 
 import java.util.List;
 
-import com.spring.eventsplanner.entity.Contact;
+import com.spring.eventsplanner.model.Contact;
 
 
 public interface ContactService {

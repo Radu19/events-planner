@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.eventsplanner.dao.LocationRepository;
-import com.spring.eventsplanner.entity.Location;
+import com.spring.eventsplanner.model.Location;
 
 @Service
 public class LocationServiceImpl implements LocationService {

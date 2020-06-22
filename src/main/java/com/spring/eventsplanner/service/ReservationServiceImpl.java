@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.eventsplanner.dao.ReservationRepository;
-import com.spring.eventsplanner.entity.Reservation;
+import com.spring.eventsplanner.model.Reservation;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {

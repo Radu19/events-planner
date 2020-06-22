@@ -1,4 +1,4 @@
-package com.spring.eventsplanner.entity;
+package com.spring.eventsplanner.model;
 
 import java.time.LocalDate;
 
@@ -129,7 +129,4 @@ public class InfoRequest {
 				+ eventDate + ", nrGuests=" + nrGuests + ", message=" + message + ", location=" + location + "]";
 	}
 
-	
-	
-	
 }
