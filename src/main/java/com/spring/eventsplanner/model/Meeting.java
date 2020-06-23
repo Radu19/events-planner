@@ -114,7 +114,7 @@ public class Meeting {
 	@Override
 	public String toString() {
 		return "Meeting [id=" + id + ", locationName=" + locationName + ", dateTime=" + dateTime + ", user=" + user
-				+ ", location=" + location + ", customer=" + customer + "]";
+				+ ", location=" + location + "]";
 	}
 
 }

@@ -18,8 +18,98 @@
 	<div th:insert="~{fragments/fragments :: navbar}"></div>
 	<div id="page-content-wrapper">
 		<div class="container">
-			<h1>Administration</h1>
-
+			<h2>Administration</h2>
+			<hr>
+			<div class="container my-3">
+				<h1 class="text-center">Welcome, [[${session.user.firstName}]] [[${session.user.lastName}]]</h1>
+				<p class="text-muted text-center" sec:authentication="principal.authorities"></p> 
+			</div>
+			<div class="row">
+				<div class="col-sm-4 my-3">
+					<div class="hero-widget card">
+						<div class="icon">
+							<i class="fa fa-home" aria-hidden="true"></i>
+						</div>
+						<div class="text">
+							<var>614</var>
+							<label class="text-muted">locations</label>
+						</div>
+						<div class="options">
+							<a th:href="@{/administration-dashboard}" class="btn btn-primary"><i class="fas fa-search"></i> View</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 my-3">
+					<div class="hero-widget card">
+						<div class="icon">
+							<i class="fas fa-clock"></i>
+						</div>
+						<div class="text">
+							<var>614</var>
+							<label class="text-muted">reservations</label>
+						</div>
+						<div class="options">
+							<a th:href="@{/administration-dashboard}" class="btn btn-primary"><i class="fas fa-search"></i> View</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 my-3">
+					<div class="hero-widget card">
+						<div class="icon">
+							<i class="fa fa-info-circle" aria-hidden="true"></i>
+						</div>
+						<div class="text">
+							<var>614</var>
+							<label class="text-muted">info requests</label>
+						</div>
+						<div class="options">
+							<a th:href="@{/administration-dashboard}" class="btn btn-primary"><i class="fas fa-search"></i> View</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 my-3">
+					<div class="hero-widget card">
+						<div class="icon">
+							<i class="fas fa-coffee"></i>
+						</div>
+						<div class="text">
+							<var>614</var>
+							<label class="text-muted">meetings</label>
+						</div>
+						<div class="options">
+							<a th:href="@{/administration-dashboard}" class="btn btn-primary"><i class="fas fa-search"></i> View</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 my-3">
+					<div class="hero-widget card">
+						<div class="icon">
+							<i class="fas fa-user"></i>
+						</div>
+						<div class="text">
+							<var>614</var>
+							<label class="text-muted">customers</label>
+						</div>
+						<div class="options">
+							<a th:href="@{/administration-dashboard}" class="btn btn-primary"><i class="fas fa-search"></i> View</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 my-3">
+					<div class="hero-widget card">
+						<div class="icon">
+							<i class="fa fa-user-secret" aria-hidden="true"></i>
+						</div>
+						<div class="text">
+							<var>614</var>
+							<label class="text-muted">organizers</label>
+						</div>
+						<div class="options">
+							<a th:href="@{/administration-dashboard}" class="btn btn-primary"><i class="fas fa-search"></i> View</a>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

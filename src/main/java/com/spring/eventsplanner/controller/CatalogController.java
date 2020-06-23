@@ -6,11 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.eventsplanner.model.Customer;
 import com.spring.eventsplanner.model.Location;
@@ -39,24 +36,9 @@ public class CatalogController {
 		int locationId = theLocation.getId();
 		theModel.addAttribute("location", theLocation);
 		theModel.addAttribute("locationId", locationId);
+		theModel.addAttribute("customer", new Customer());
 		
 		return "/catalog/location-details";
 	}
 	
-	@PostMapping("/meeting")
-	public String bookMeeting(@ModelAttribute("customer") Customer theCustomer, RedirectAttributes attributes) {
-		
-		attributes.addFlashAttribute("customer", theCustomer);
-		
-		return "redirect:/catalog/meeting";
-	}
-	
-	@GetMapping("/meeting")
-	public String bookMeeting(@RequestParam("locationId") int theId, Model theModel) {
-		
-		Location theLocation = locationService.findById(theId);
-		theModel.addAttribute("location", theLocation);
-	
-		return "/catalog/book-meeting";
-	}
 }

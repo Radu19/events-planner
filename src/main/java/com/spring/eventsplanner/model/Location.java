@@ -305,8 +305,7 @@ public class Location {
 				+ ", minGuests=" + minGuests + ", pricePerGuest=" + pricePerGuest + ", ownKitchen=" + ownKitchen
 				+ ", ownMusic=" + ownMusic + ", ceremonyTypes=" + ceremonyTypes + ", cuisine=" + cuisine
 				+ ", modifyMenu=" + modifyMenu + ", specialMenu=" + specialMenu + ", paymentMethod=" + paymentMethod
-				+ ", description=" + description + ", img=" + img + ", reservations=" + reservations + ", meetings="
-				+ meetings + ", infoRequests=" + infoRequests + "]";
+				+", img=" + img + ", reservations=" + reservations + ", infoRequests=" + infoRequests + "]";
 	}
 
 	

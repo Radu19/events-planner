@@ -44,4 +44,26 @@ public class CustomerServiceImpl implements CustomerService {
 		customerRepository.deleteById(theId);
 	}
 
+	@Override
+	public boolean isNew(Customer theCustomer) {
+		Optional<Customer> result = Optional
+				.ofNullable(customerRepository.findByEmail(theCustomer.getEmail()));
+		if(result.isPresent()) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public Customer findByEmail(String email) {
+		Optional<Customer> result = Optional.ofNullable(customerRepository.findByEmail(email));
+		Customer theCustomer = null;
+		if(result.isPresent()) {
+			theCustomer = result.get();
+		}else {
+			throw new RuntimeException("Did not get the customer with the email: " + email);
+		}
+		return theCustomer;
+	}
+
 }

@@ -157,8 +157,7 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNr=" + phoneNr
-				+ ", email=" + email + ", address=" + address + ", meetings=" + meetings + ", reservations="
-				+ reservations + "]";
+				+ ", email=" + email + ", address=" + address+ "]";
 	}
 	
 	
