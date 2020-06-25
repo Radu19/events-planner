@@ -28,7 +28,7 @@ public class InfoRequest {
 	private String email;
 	
 	@Column(name="phone_nr")
-	private int phoneNr;
+	private String phoneNr;
 	
 	@Column(name="event_date", columnDefinition = "DATE")
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
@@ -47,7 +47,7 @@ public class InfoRequest {
 	
 	public InfoRequest() {}
 
-	public InfoRequest(String name, String email, int phoneNr, LocalDate eventDate, int nrGuests, String message) {
+	public InfoRequest(String email, String phoneNr, LocalDate eventDate, int nrGuests, String message) {
 		super();
 		this.email = email;
 		this.phoneNr = phoneNr;
@@ -56,8 +56,8 @@ public class InfoRequest {
 		this.message = message;
 	}
 	
-	public InfoRequest(String name, String email, int phoneNr, LocalDate eventDate, int nrGuests, String message,
-			Customer customer, Location location) {
+	public InfoRequest(String email, String phoneNr, LocalDate eventDate, int nrGuests, String message,
+			Location location) {
 		super();
 		this.email = email;
 		this.phoneNr = phoneNr;
@@ -83,11 +83,11 @@ public class InfoRequest {
 		this.email = email;
 	}
 
-	public int getPhoneNr() {
+	public String getPhoneNr() {
 		return phoneNr;
 	}
 
-	public void setPhoneNr(int phoneNr) {
+	public void setPhoneNr(String phoneNr) {
 		this.phoneNr = phoneNr;
 	}
 
@@ -126,7 +126,7 @@ public class InfoRequest {
 	@Override
 	public String toString() {
 		return "InfoRequest [id=" + id + ", email=" + email + ", phoneNr=" + phoneNr + ", eventDate="
-				+ eventDate + ", nrGuests=" + nrGuests + ", message=" + message + ", location=" + location + "]";
+				+ eventDate + ", nrGuests=" + nrGuests + ", message=" + message + "]";
 	}
 
 }

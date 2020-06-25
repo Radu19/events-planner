@@ -16,8 +16,8 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link th:href="@{css/bootstrap-styles.css}" rel="stylesheet" />
 
-  
-    
+    <!--datetime picker-->
+    <link rel="stylesheet" th:href="@{css/jquery.datetimepicker.min.css}" />
 </head>
 <body id="page-top">
 <div th:insert="~{fragments/fragments :: main-navbar}"></div>
@@ -178,35 +178,36 @@
         </div>
         <div class="col-md-6">
             <div class="container pt-5">
-                <form method="POST">
+                <form th:action="@{/info-request/process-request}" th:object="${infoRequest}" method="POST">
                       <div class="container-fluid">
+                        <input type="hidden" th:field="*{location}" th:value="${location.id}">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span class="input-group-text">@</span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Email" >
+                            <input type="text" th:field="*{email}" class="form-control" placeholder="Email" >
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-phone"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Phone" >
+                            <input type="text" th:field="*{phoneNr}" class="form-control" placeholder="Phone" >
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-calendar"></i></i></span>
                             </div>
-                            <input type="text" id="datepicker1" class="form-control" th:value="${#temporals.format(dateBirth, 'yyyy-MM-dd')}" 
+                            <input type="text" th:field="*{eventDate}" id="datepicker1" class="form-control" th:value="${#temporals.format(eventDate, 'yyyy-MM-dd')}" 
                              placeholder="Event date" autocomplete="off">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-chair"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Nr. of guests" >
+                            <input type="text" th:field="*{nrGuests}" class="form-control" placeholder="Nr. of guests" >
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Message"></textarea>
+                            <textarea th:field="*{message}" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Message"></textarea>
                         </div>
                         <button class="btn btn-outline-dark btn-lg" type="submit">Send</button>
                     </div>   
@@ -230,11 +231,21 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
   <script src="https://cdn.jsdelivr.net/jquery.counterup/1.0/jquery.counterup.min.js"></script>
+  <!--datepicker-->
+  <script type="text/javascript" th:src="@{js/jquery.datetimepicker.full.min.js}"></script>
   <script>
     $('.counter').counterUp({
       delay: 10,
       time: 2000
     });
+
+    $('#datepicker1').datetimepicker({
+            timepicker: false,
+            datepicker: true,
+            format: 'd-m-Y',
+            yearStart: 2020,
+            yearEnd: 2022
+        });
   </script>
 
 </body>

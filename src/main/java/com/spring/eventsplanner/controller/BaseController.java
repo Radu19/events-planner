@@ -18,4 +18,8 @@ public class BaseController {
 		return "administration-page";
 	}
 
+	@GetMapping("/thank-you")
+	public String thankYouPage() {
+		return "/thank-you";
+	}
 }

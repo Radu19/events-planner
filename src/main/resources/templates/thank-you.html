@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+
+    <title>Thank You</title>
+
+    <!-- Font Awesome icons-->
+    <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link th:href="@{css/bootstrap-styles.css}" rel="stylesheet" />
+
+</head>
+<body id="page-top">
+<div th:insert="~{fragments/fragments :: main-navbar}"></div>
+
+<div class="container-fluid container-margin-top">
+    <div class="container text-center">
+        <h2>Thank you for your trust</h2>
+        <p>Your request have been received and will be processed as soon as possible.</p>
+        <hr>
+        <div class="my-3">
+            <img th:src="@{img/illustrations/data-processing.png}" alt="request processing" class="img-fluid">
+        </div>
+        <a class="btn btn-primary btn-lg" th:href="@{/catalog/list}">Back to Lacations</a>
+    </div>
+</div>
+
+<div th:insert="~{fragments/fragments :: footer}"></div>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<!-- Third party plugin JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<!-- Core theme JS-->
+<script th:src="@{js/scripts.js}"></script>
+</body>
+</html>

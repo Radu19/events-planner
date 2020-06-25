@@ -1,5 +1,6 @@
 package com.spring.eventsplanner.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.eventsplanner.model.Customer;
+import com.spring.eventsplanner.model.InfoRequest;
 import com.spring.eventsplanner.model.Location;
 import com.spring.eventsplanner.service.LocationService;
 
@@ -37,6 +39,12 @@ public class CatalogController {
 		theModel.addAttribute("location", theLocation);
 		theModel.addAttribute("locationId", locationId);
 		theModel.addAttribute("customer", new Customer());
+		
+		InfoRequest theInfoRequest = new InfoRequest();
+		LocalDate eventDate = LocalDate.now().plusMonths(1);
+		theInfoRequest.setEventDate(eventDate);
+		theInfoRequest.setLocation(theLocation);
+		theModel.addAttribute("infoRequest", theInfoRequest);
 		
 		return "/catalog/location-details";
 	}

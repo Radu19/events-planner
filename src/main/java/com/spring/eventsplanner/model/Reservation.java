@@ -210,8 +210,7 @@ public class Reservation {
 		return "Reservation [id=" + id + ", reservationDate=" + reservationDate + ", ceremonyType=" + ceremonyType
 				+ ", nrGuests=" + nrGuests + ", musicIncluded=" + musicIncluded + ", kitchenIncluded=" + kitchenIncluded
 				+ ", cuisine=" + cuisine + ", details=" + details + ", paymentMethod=" + paymentMethod
-				+ ", paymentStatus=" + paymentStatus + ", user=" + user + ", customer=" + customer + ", location="
-				+ location + "]";
+				+ ", paymentStatus=" + paymentStatus + "]";
 	}
 
 
