@@ -1,6 +1,7 @@
 package com.spring.eventsplanner.controller;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -73,7 +74,7 @@ public class MeetingController {
 		
 		theModel.addAttribute("meeting", theMeeting);
 	
-		return "/catalog/book-meeting";
+		return "/meetings/book-meeting";
 	}
 	
 	@PostMapping("/book")
@@ -84,7 +85,16 @@ public class MeetingController {
 		
 		//save meeting
 		meetingService.save(theMeeting);
-		return null;
+		return "redirect:/thank-you";
+	}
+	
+	@GetMapping("/list")
+	public String showMeetings(Model theModel) {
+		
+		List<Meeting> meetings = meetingService.findAll();
+		theModel.addAttribute("meetings", meetings);
+		
+		return "/meetings/meetings-list";
 	}
 	
 }

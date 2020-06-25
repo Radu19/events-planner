@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+
+    <!--Bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    
+    <link rel="stylesheet" th:href="@{css/style.css}">
+
+    <title>Our Locations</title>
+</head>
+<body>
+    <div th:insert="~{fragments/fragments :: navbar}"></div>
+	<div id="page-content-wrapper">
+		<div class="container">
+		    <h3>Reservations</h3>
+		    <hr>
+		    <div>
+		        <h6>
+                    <b>User: </b><span sec:authentication="name"></span> 
+                    <span sec:authentication="principal.authorities"></span>
+		        </h6><br>
+		    </div>
+		    <div class="container" style="margin-bottom: 2.2rem;">
+		        <div class="row">
+		            <a th:href="@{/administration-dashboard}" class="btn btn-primary" style="margin-right: 3rem;">Add Location</a>
+		            <input class="form-control col-4" type="search" id="myInput" placeholder="Search..." />
+		        </div>
+		    </div>
+            
+		</div>
+    </div>
+    
+    <script>
+		$(document).ready(function(){
+		  $("#myInput").on("keyup", function() {
+			var value = $(this).val().toLowerCase();
+			$("#myTable tr").filter(function() {
+			  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		  });
+		});
+    </script>
+
+</body>
+</html>

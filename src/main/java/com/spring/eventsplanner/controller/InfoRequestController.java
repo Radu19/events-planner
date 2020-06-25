@@ -1,7 +1,10 @@
 package com.spring.eventsplanner.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +25,15 @@ public class InfoRequestController {
 		
 		infoRequestService.save(theInfoRequest);
 		return "redirect:/thank-you";
+	}
+	
+	@GetMapping("/list")
+	public String showInfoRequestsList(Model theModel) {
+		
+		List<InfoRequest> infoRequests = infoRequestService.findAll();
+		theModel.addAttribute("infoRequests", infoRequests);
+		
+		return "/info-requests/info-requests-list";
 	}
 	
 }
