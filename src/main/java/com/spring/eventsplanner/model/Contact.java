@@ -27,7 +27,7 @@ public class Contact {
 	private String email;
 	
 	@Column(name="phone_nr")
-	private int phoneNr;
+	private String phoneNr;
 	
 	@Column(name="event_type")
 	private String eventType;
@@ -41,7 +41,7 @@ public class Contact {
 	
 	public Contact() {}
 
-	public Contact(String name, String email, int phoneNr, String eventType, LocalDate eventDate, String message) {
+	public Contact(String name, String email, String phoneNr, String eventType, LocalDate eventDate, String message) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -75,11 +75,11 @@ public class Contact {
 		this.email = email;
 	}
 
-	public int getPhoneNr() {
+	public String getPhoneNr() {
 		return phoneNr;
 	}
 
-	public void setPhoneNr(int phoneNr) {
+	public void setPhoneNr(String phoneNr) {
 		this.phoneNr = phoneNr;
 	}
 
