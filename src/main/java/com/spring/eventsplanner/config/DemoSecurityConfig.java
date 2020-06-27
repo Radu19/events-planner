@@ -39,6 +39,7 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.authorizeRequests()
 		    .antMatchers("/").permitAll()// it will allow public access to index.html
+		    .antMatchers("/administration-dashboard").hasRole("EMPLOYEE")
 		    .antMatchers("/catalog/**").permitAll()
 			.antMatchers("/locations").hasRole("EMPLOYEE")
 //			.antMatchers("/leaders/**").hasRole("MANAGER")
