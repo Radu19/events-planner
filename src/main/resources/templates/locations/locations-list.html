@@ -28,8 +28,8 @@
                     <span sec:authentication="principal.authorities"></span>
 		        </h6><br>
 		    </div>
-		    <div class="container" style="margin-bottom: 2.2rem;">
-		        <div class="row">
+		    <div class="container">
+		        <div class="row mb-3">
 		            <a th:href="@{/locations/add}" class="btn btn-primary" style="margin-right: 3rem;">Add Location</a>
 		            <input class="form-control col-4" type="search" id="myInput" placeholder="Search..." />
 		        </div>
@@ -41,6 +41,7 @@
                     <th>Max Guests</th>
                     <th>Min Guests</th>
                     <th>Price</th>
+                    <th>Reservation</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </thead>
@@ -51,6 +52,11 @@
                     <td>[[${location.maxGuests}]]</td>
                     <td>[[${location.minGuests}]]</td>
                     <td>[[${location.pricePerGuest}]]</td>
+                    <td class="text-center">
+                        <div sec:authorize="hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')">
+                            <p data-placement="top" data-toggle="tooltip" title="Add reservation"><a th:href="@{/reservation/add(locationId=${location.id})}" class="btn btn-primary btn-xs" data-title="Add reservation"><i class="fa fa-plus" aria-hidden="true"></i></a></p>
+                        </div>
+                    </td>
                     <td>
                         <div sec:authorize="hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')">
                             <p data-placement="top" data-toggle="tooltip" title="Edit"><a th:href="@{/locations/update(locationId=${location.id})}" class="btn btn-primary btn-xs" data-title="Edit"><i class="fas fa-pencil-alt"></i></a></p>

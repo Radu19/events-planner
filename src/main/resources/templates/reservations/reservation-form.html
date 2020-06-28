@@ -21,7 +21,7 @@
     <div th:insert="~{fragments/fragments :: navbar}"></div>
     <div class="page-content-wrapper">
         <div class="container">
-            <h3>Reservation Directory</h3>
+            <h3>Reservation for [[${location.name}]]</h3>
             <hr>
             
             
@@ -29,23 +29,17 @@
             <form th:action="@{/reservation/save}" th:object="${reservation}" method="POST">
                 <input type="hidden" th:field="*{id}" />
 
+                <input type="hidden" th:value="${location.id}" th:field="*{location}"/>
+
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label"><b>Customer</b></label>
                     <div class="col-sm-10">
-                        <select id="customer" name="customer" th:field="*{customer}">
+                        <select id="customer" name="customer" th:field="*{customer}" class="form-control mb-6 col-6">
                             <option th:each="customer : ${customers}" th:value="${customer.id}" th:text="${customer.email}"></option>
                         </select>
                     </div>
                 </div>
 
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label"><b>Location</b></label>
-                    <div class="col-sm-10">
-                        <select id="location" name="location" th:field="*{location}">
-                            <option th:each="location : ${locations}" th:value="${location.id}" th:text="${location.name}"></option>
-                        </select>
-                    </div>
-                </div>
 
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label"><b>Reservation date</b></label>
@@ -55,9 +49,20 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label"><b>Ceremony type</b></label>
+                    <label class="col-sm-2 col-form-label"><b>Ceremony Type</b></label>
                     <div class="col-sm-10">
-                        <input type="text" th:field="*{ceremonyType}" class="form-control mb-6 col-6"  />
+                        <select id="ceremonyType" name="ceremonyType" th:field="*{ceremonyType}" class="form-control mb-6 col-6">
+                            <option th:each="ceremonyType : ${ceremonyTypes}" th:value="${ceremonyType}" th:text="${ceremonyType}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label"><b>Cuisine</b></label>
+                    <div class="col-sm-10">
+                        <select id="cuisine" name="cuisine" th:field="*{cuisine}" class="form-control mb-6 col-6">
+                            <option th:each="cuisine : ${cuisines}" th:value="${cuisine}" th:text="${cuisine}"></option>
+                        </select>
                     </div>
                 </div>
 
@@ -71,35 +76,29 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label"><b>Music included</b></label>
                     <div class="col-sm-10">
-                        <input type="text" th:field="*{musicIncluded}" class="form-control mb-6 col-6"  />
+                      <select th:field="*{musicIncluded}" class="form-control mb-6 col-6">
+                        <option value="Yes" selected>Yes</option>
+                        <option value="No">No</option>
+                      </select>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label"><b>Kitchen included</b></label>
                     <div class="col-sm-10">
-                        <input type="text" th:field="*{kitchenIncluded}" class="form-control mb-6 col-6"  />
+                      <select th:field="*{kitchenIncluded}" class="form-control mb-6 col-6">
+                        <option value="Yes" selected>Yes</option>
+                        <option value="No">No</option>
+                      </select>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label"><b>Cuisine</b></label>
+                    <label class="col-sm-2 col-form-label"><b>Payment Method</b></label>
                     <div class="col-sm-10">
-                        <input type="text" th:field="*{cuisine}" class="form-control mb-6 col-6"  />
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label"><b>Payment method</b></label>
-                    <div class="col-sm-10">
-                        <input type="text" th:field="*{paymentMethod}" class="form-control mb-6 col-6"  />
-                    </div>
-				</div>
-				
-				<div class="form-group row">
-                    <label class="col-sm-2 col-form-label"><b>Payment status</b></label>
-                    <div class="col-sm-10">
-                        <input type="text" th:field="*{paymentStatus}" class="form-control mb-6 col-6"  />
+                      <select th:field="*{paymentMethod}" class="form-control mb-6 col-6">
+                        <option th:each="paymentMethod : ${paymentMethods}" th:value="${paymentMethod}" th:text="${paymentMethod}"></option>
+                      </select>
                     </div>
                 </div>
 

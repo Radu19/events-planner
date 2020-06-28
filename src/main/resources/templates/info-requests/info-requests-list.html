@@ -46,7 +46,7 @@
                         <td>[[${infoRequest.phoneNr}]]</td>
                         <td>[[${infoRequest.eventDate}]]</td>
                         <td>[[${infoRequest.nrGuests}]]</td>
-                        <td>[[${infoRequest.location.getName()}]]</td>
+                        <td>[[${infoRequest.location.name}]]</td>
                         <td>
                             <div sec:authorize="hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')">
                                 <p data-placement="top" data-toggle="tooltip" title="View more details"><a th:href="@{/}" class="btn btn-primary btn-xs" data-title="View more details"><i class="fa fa-search-plus" aria-hidden="true"></i></a></p>

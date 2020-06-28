@@ -48,20 +48,29 @@ public class ReservationController {
 	}
 	
 	@GetMapping("/add")
-	public String addReservation(Model theModel) {
+	public String addReservation(@RequestParam("locationId") int locationId, Model theModel) {
 		
 		Reservation theReservation = new Reservation();
 		
-		List<Customer> customers = customerService.findAll();
-		List<Location> locations = locationService.findAll();
+		Location theLocation = locationService.findById(locationId);
+		theModel.addAttribute("location", theLocation);
 		
-		theModel.addAttribute("locations", locations);
+		String[] ceremonyTypes = theLocation.getCeremonyTypes().split(",");
+		theModel.addAttribute("ceremonyTypes", ceremonyTypes);
+		
+		String[] cuisine = theLocation.getCuisine().split(",");
+		theModel.addAttribute("cuisines", cuisine);
+		
+		String[] paymentMethods = theLocation.getPaymentMethod().split(",");
+		theModel.addAttribute("paymentMethods", paymentMethods);
+		
+		List<Customer> customers = customerService.findAll();
 		theModel.addAttribute("customers", customers);
 		
-	
 		LocalDate reservationDate = LocalDate.now().plusMonths(1);
 		theReservation.setReservationDate(reservationDate);
 		
+		theReservation.setLocation(theLocation);
 		theModel.addAttribute("reservation", theReservation);
 		
 		return "/reservations/reservation-form";
@@ -72,6 +81,7 @@ public class ReservationController {
 		
 		User organizer = userService.findById((long)3);
 		theReservation.setUser(organizer);
+		theReservation.setPaymentStatus("Pending");
 		
 		reservationService.save(theReservation);
 		
