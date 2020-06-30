@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,9 +23,11 @@
             <h3>Location Directory</h3>
             <hr>
         
-            <form method="POST" enctype="multipart/form-data" th:action="@{/upload/image}">
-              <input type="file" class="form-control-file" name="file" multiple="true"/>
-              <input type="submit" value="Upload" class="btn-primary" />
+            <form method="POST" enctype="multipart/form-data" th:action="@{/upload/location-image}">
+              <div class="form-group row">
+                <input type="file" class="form-control-file" name="file" multiple="true"/>
+                <input type="submit" value="Upload" class="btn btn-primary" />
+              </div>
             </form>
 
             <form th:action="@{/locations/save}" method="POST" th:object="${location}">

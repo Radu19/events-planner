@@ -22,6 +22,7 @@ public class CatalogController {
 	@Autowired
 	private LocationService locationService;
 	
+	//Exista doua tipuri de requesturi 
 	@GetMapping("/list")
 	public String locationsList(Model theModel) {
 		

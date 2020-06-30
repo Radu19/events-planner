@@ -11,6 +11,7 @@ import com.spring.eventsplanner.validation.ValidEmail;
 })
 public class CrmUser {
 
+	//anotatii pentru validare
 	@NotNull(message = "is required")
 	@Size(min = 1, message = "is required")
 	private String userName;
@@ -35,6 +36,17 @@ public class CrmUser {
 	@NotNull(message = "is required")
 	@Size(min = 1, message = "is required")
 	private String email;
+	
+	@NotNull(message = "is required")
+	@Size(min = 1, message = "is required")
+	private String address;
+	
+	@NotNull(message = "is required")
+	@Size(min = 1, message = "is required")
+	private String phoneNr;
+	
+	@NotNull(message = "is required")
+	private String img;
 
 	public CrmUser() {
 
@@ -88,4 +100,28 @@ public class CrmUser {
 		this.email = email;
 	}
 
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPhoneNr() {
+		return phoneNr;
+	}
+
+	public void setPhoneNr(String phoneNr) {
+		this.phoneNr = phoneNr;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+	
 }

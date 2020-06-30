@@ -23,30 +23,31 @@
 <div th:insert="~{fragments/fragments :: main-navbar}"></div>
 
 <div class="container-fluid container-margin-top">
-    <div class="container">
+    <div class="container my-3">
         <h2 class="text-center">Thank you for your trust</h2>
-        <hr>
+        <hr class="my-3">
        <div class="row">
         <div class="col-md-5">
             <img th:src="@{img/locations/{image}(image=${location.img})}" alt="location photo" class="img-fluid img-thumbnail">
        </div>
-       <div class="col-md-7">
-            <h4>Choose the date</h4>
-            <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            <form th:action="@{/meeting/book}" th:object="${meeting}" method="POST">
-                <div class="input-group mb-3">
-                    <input type="text" th:value="${location.id}" th:field="*{location}">
-                    <input type="text" th:value="${customerId}" th:field="*{customer}" >
-                    <input type="text" th:value="${location.name}" th:field="*{locationName}">
-                    <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-calendar"></i></span>
-                    </div>
-                    <input type="text" id="datepicker1" class="form-control" th:value="${#temporals.format(dateTime, 'dd-MM-yyyy HH:mm')}"
-                    th:field="*{dateTime}" placeholder="Meeting date and time" autocomplete="off">
-                    <button class="btn btn-primary">Book</button>
-                </div>
-            </form>
-       </div>
+            <div class="col-md-7">
+                    <p class="alert alert-warning my-3 py-2">We need you to see in person the location to have a better understanding of the place and its characteristics. Thank you for your patientce.</p>
+                    <h4>Choose the date</h4>
+                    <p>Choose a date that is convenient for you to have a meeting at the corresponding location. We'll get back to you with more details about the availability of this date and location.</p>
+                    <form th:action="@{/meeting/book}" th:object="${meeting}" method="POST">
+                        <div class="input-group mt-3">
+                            <input type="hidden" th:value="${location.id}" th:field="*{location}">
+                            <input type="hidden" th:value="${customerId}" th:field="*{customer}" >
+                            <input type="hidden" th:value="${location.name}" th:field="*{locationName}">
+                            <div class="input-group-prepend ">
+                            <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                            </div>
+                            <input type="text" id="datepicker1" class="form-control" th:value="${#temporals.format(dateTime, 'dd-MM-yyyy HH:mm')}"
+                            th:field="*{dateTime}" placeholder="Meeting date and time" autocomplete="off">
+                            <button class="btn btn-primary">Book</button>
+                        </div>
+                    </form>
+            </div>
        </div>
     </div>
 </div>

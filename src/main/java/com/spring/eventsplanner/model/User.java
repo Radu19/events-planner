@@ -41,6 +41,15 @@ public class User {
 
 	@Column(name = "email")
 	private String email;
+	
+	@Column(name = "address")
+	private String address;
+	
+	@Column(name = "phone_nr")
+	private String phoneNr;
+	
+	@Column(name = "image")
+	private String img;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "users_roles", 
@@ -111,6 +120,47 @@ public class User {
 		this.roles = roles;
 		this.reservations = reservations;
 		this.meetings = meetings;
+	}
+
+	public User(String userName, String password, String firstName, String lastName, String email, String address,
+			String phoneNr, String img, Collection<Role> roles, List<Reservation> reservations,
+			List<Meeting> meetings) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.address = address;
+		this.phoneNr = phoneNr;
+		this.img = img;
+		this.roles = roles;
+		this.reservations = reservations;
+		this.meetings = meetings;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPhoneNr() {
+		return phoneNr;
+	}
+
+	public void setPhoneNr(String phoneNr) {
+		this.phoneNr = phoneNr;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 	public Long getId() {

@@ -41,7 +41,14 @@ public class RegistrationController {
 	@GetMapping("/form")
 	public String showMyLoginPage(Model theModel) {
 		
-		theModel.addAttribute("crmUser", new CrmUser());
+		String img = (String) theModel.asMap().get("organizerImg");
+		
+		CrmUser crmUser = new CrmUser();
+		if(img!=null) {
+			crmUser.setImg(img);
+		}
+		
+		theModel.addAttribute("crmUser", crmUser);
 		
 		return "registration-form";
 	}

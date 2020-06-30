@@ -43,19 +43,34 @@ public class FileUploadController {
 		return "uploadForm";
 	}
 
-	@PostMapping("/image")
-	public String handleFileUpload(@RequestParam("file") MultipartFile file,
+	@PostMapping("/location-image")
+	public String locationImageUpload(@RequestParam("file") MultipartFile file,
 			RedirectAttributes redirectAttributes) throws IOException {
 
 		storageService.store(file);
 		System.out.println("...>>>>>>>"+file.toString());
-		redirectAttributes.addFlashAttribute("locationName", file.getOriginalFilename());
+		redirectAttributes.addFlashAttribute("locationImg", file.getOriginalFilename());
 
 		String directoryString = "src/main/resources/static/img/docs";
 		File theFile = new File(directoryString, file.getOriginalFilename());
 		FileUtils.writeByteArrayToFile(theFile, file.getBytes());
 
 		return "redirect:/locations/add";
+	}
+	
+	@PostMapping("/organizer-image")
+	public String handleFileUpload(@RequestParam("file") MultipartFile file,
+			RedirectAttributes redirectAttributes) throws IOException {
+
+		storageService.store(file);
+		System.out.println("...>>>>>>>"+file.toString());
+		redirectAttributes.addFlashAttribute("organizerImg", file.getOriginalFilename());
+
+		String directoryString = "src/main/resources/static/img/docs";
+		File theFile = new File(directoryString, file.getOriginalFilename());
+		FileUtils.writeByteArrayToFile(theFile, file.getBytes());
+
+		return "redirect:/register/form";
 	}
 
 	@ExceptionHandler(StorageFileNotFoundException.class)

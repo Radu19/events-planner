@@ -34,7 +34,7 @@ public class LocationController {
 	@GetMapping("/add")
 	public String addLocation(Model theModel) {
 		
-		String img = (String) theModel.asMap().get("locationName");
+		String img = (String) theModel.asMap().get("locationImg");
 		
 		Location theLocation = new Location();
 		if(img!=null) {
