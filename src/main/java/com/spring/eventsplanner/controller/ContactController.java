@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.eventsplanner.model.Contact;
 import com.spring.eventsplanner.service.ContactService;
@@ -35,5 +36,13 @@ public class ContactController {
 		theModel.addAttribute("contacts", contacts);
 		
 		return "/contacts/contacts-list";
+	}
+	
+	@GetMapping("/delete")
+	public String deleteContact(@RequestParam("contactId") int contactId) {
+		
+		contactService.deleteById(contactId);
+		
+		return "redirect:/contact/list";
 	}
 }

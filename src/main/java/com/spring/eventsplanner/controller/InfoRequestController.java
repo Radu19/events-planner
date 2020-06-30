@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.eventsplanner.model.InfoRequest;
 import com.spring.eventsplanner.service.InfoRequestService;
@@ -35,5 +36,14 @@ public class InfoRequestController {
 		
 		return "/info-requests/info-requests-list";
 	}
+	
+	@GetMapping("/delete")
+	public String deleteInfoRequest(@RequestParam("infoRequestId") int infoRequestId) {
+		
+		infoRequestService.deleteById(infoRequestId);
+		
+		return "redirect:/meeting/list";
+	}
+	
 	
 }

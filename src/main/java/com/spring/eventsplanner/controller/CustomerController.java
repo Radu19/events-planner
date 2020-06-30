@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.eventsplanner.model.Customer;
 import com.spring.eventsplanner.service.CustomerService;
@@ -25,5 +26,13 @@ public class CustomerController {
 		theModel.addAttribute("customers", customers);
 		
 		return "/customers/customers-list";
+	}
+	
+	@GetMapping("/delete")
+	public String deleteCustomer(@RequestParam("customerId") int customerId) {
+		
+		customerService.deleteById(customerId);
+		
+		return "redirect:/customer/list";
 	}
 }

@@ -97,4 +97,12 @@ public class MeetingController {
 		return "/meetings/meetings-list";
 	}
 	
+	@GetMapping("/delete")
+	public String deleteMeeting(@RequestParam("meetingId") int meetingId) {
+		
+		meetingService.deleteById(meetingId);
+		
+		return "redirect:/meeting/list";
+	}
+	
 }

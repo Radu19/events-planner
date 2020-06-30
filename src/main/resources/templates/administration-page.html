@@ -31,11 +31,11 @@
 							<i class="fa fa-home" aria-hidden="true"></i>
 						</div>
 						<div class="text">
-							<var>614</var>
+							<var>[[${locations}]]</var>
 							<label class="text-muted">locations</label>
 						</div>
 						<div class="options">
-							<a th:href="@{/administration-dashboard}" class="btn btn-primary"><i class="fas fa-search"></i> View</a>
+							<a th:href="@{/location/list}" class="btn btn-primary"><i class="fas fa-search"></i> View</a>
 						</div>
 					</div>
 				</div>
@@ -45,11 +45,11 @@
 							<i class="fas fa-clock"></i>
 						</div>
 						<div class="text">
-							<var>614</var>
+							<var>[[${reservations}]]</var>
 							<label class="text-muted">reservations</label>
 						</div>
 						<div class="options">
-							<a th:href="@{/administration-dashboard}" class="btn btn-primary"><i class="fas fa-search"></i> View</a>
+							<a th:href="@{/reservation/list}" class="btn btn-primary"><i class="fas fa-search"></i> View</a>
 						</div>
 					</div>
 				</div>
@@ -59,11 +59,11 @@
 							<i class="fa fa-info-circle" aria-hidden="true"></i>
 						</div>
 						<div class="text">
-							<var>614</var>
+							<var>[[${infoRequests}]]</var>
 							<label class="text-muted">info requests</label>
 						</div>
 						<div class="options">
-							<a th:href="@{/administration-dashboard}" class="btn btn-primary"><i class="fas fa-search"></i> View</a>
+							<a th:href="@{/info-request/list}" class="btn btn-primary"><i class="fas fa-search"></i> View</a>
 						</div>
 					</div>
 				</div>
@@ -73,11 +73,11 @@
 							<i class="fas fa-coffee"></i>
 						</div>
 						<div class="text">
-							<var>614</var>
+							<var>[[${meetings}]]</var>
 							<label class="text-muted">meetings</label>
 						</div>
 						<div class="options">
-							<a th:href="@{/administration-dashboard}" class="btn btn-primary"><i class="fas fa-search"></i> View</a>
+							<a th:href="@{/meeting/list}" class="btn btn-primary"><i class="fas fa-search"></i> View</a>
 						</div>
 					</div>
 				</div>
@@ -87,25 +87,25 @@
 							<i class="fas fa-user"></i>
 						</div>
 						<div class="text">
-							<var>614</var>
+							<var>[[${customers}]]</var>
 							<label class="text-muted">customers</label>
 						</div>
 						<div class="options">
-							<a th:href="@{/administration-dashboard}" class="btn btn-primary"><i class="fas fa-search"></i> View</a>
+							<a th:href="@{/customer/list}" class="btn btn-primary"><i class="fas fa-search"></i> View</a>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-4 my-3">
 					<div class="hero-widget card">
 						<div class="icon">
-							<i class="fa fa-user-secret" aria-hidden="true"></i>
+							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</div>
 						<div class="text">
-							<var>614</var>
-							<label class="text-muted">organizers</label>
+							<var>[[${contacts}]]</var>
+							<label class="text-muted">contacts</label>
 						</div>
 						<div class="options">
-							<a th:href="@{/administration-dashboard}" class="btn btn-primary"><i class="fas fa-search"></i> View</a>
+							<a th:href="@{/contact/list}" class="btn btn-primary"><i class="fas fa-search"></i> View</a>
 						</div>
 					</div>
 				</div>
