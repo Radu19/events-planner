@@ -12,8 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.spring.eventsplanner.validation.ValidEmail;
 
 @Entity
 @Table(name="request_info")
@@ -24,19 +29,30 @@ public class InfoRequest {
 	@Column(name="id")
 	private int id;
 	
+	@ValidEmail
+	@NotNull(message = "Email is required")
+	@Size(min = 1, message = "Email is required")
 	@Column(name="email")
 	private String email;
 	
+	@Pattern(regexp="^(\\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\\s|\\.|\\-)?([0-9]{3}(\\s|\\.|\\-|)){2}$", 
+			message="Invalid phone number")
+	@NotNull(message = "Phone number is required")
+	@Size(min = 1, message = "Phone number is required")
 	@Column(name="phone_nr")
 	private String phoneNr;
 	
+	@NotNull(message = "Event date is required")
 	@Column(name="event_date", columnDefinition = "DATE")
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate eventDate;
 	
+	@NotNull(message = "Number of guests is required")
 	@Column(name="nr_guests")
 	private int nrGuests;
 	
+	@NotNull(message = "Message is required")
+	@Size(min = 1, message = "Message is required")
 	@Column(name="message")
 	private String message;
 	

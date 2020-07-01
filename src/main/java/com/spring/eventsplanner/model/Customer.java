@@ -12,6 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import com.spring.eventsplanner.validation.ValidEmail;
 
 @Entity
 @Table(name="customer")
@@ -22,15 +27,24 @@ public class Customer {
 	@Column(name="id")
 	private int id;
 	
+	@NotNull(message = "First name is required")
+	@Size(min = 1, message = "First name is required")
 	@Column(name="first_name")
 	private String firstName;
 	
+	@NotNull(message = "Last name is required")
+	@Size(min = 1, message = "Last name is required")
 	@Column(name="last_name")
 	private String lastName;
 	
+	@Pattern(regexp="^(\\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\\s|\\.|\\-)?([0-9]{3}(\\s|\\.|\\-|)){2}$", 
+			message="Invalid phone number")
 	@Column(name="phone_nr")
 	private String phoneNr;
 	
+	@ValidEmail
+	@NotNull(message = "Email is required")
+	@Size(min = 1, message = "Email is required")
 	@Column(name="email")
 	private String email;
 	

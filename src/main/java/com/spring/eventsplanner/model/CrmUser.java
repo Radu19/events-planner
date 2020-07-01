@@ -11,7 +11,6 @@ import com.spring.eventsplanner.validation.ValidEmail;
 })
 public class CrmUser {
 
-	//anotatii pentru validare
 	@NotNull(message = "is required")
 	@Size(min = 1, message = "is required")
 	private String userName;

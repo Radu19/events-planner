@@ -22,7 +22,7 @@ public class CatalogController {
 	@Autowired
 	private LocationService locationService;
 	
-	//Exista doua tipuri de requesturi 
+	
 	@GetMapping("/list")
 	public String locationsList(Model theModel) {
 		
@@ -34,19 +34,21 @@ public class CatalogController {
 	
 	@GetMapping("/details")
 	public String locationDetails(@RequestParam("locationId") int theId, Model theModel) {
-		
 		Location theLocation = locationService.findById(theId);
 		int locationId = theLocation.getId();
 		theModel.addAttribute("location", theLocation);
 		theModel.addAttribute("locationId", locationId);
-		theModel.addAttribute("customer", new Customer());
-		
-		InfoRequest theInfoRequest = new InfoRequest();
-		LocalDate eventDate = LocalDate.now().plusMonths(1);
-		theInfoRequest.setEventDate(eventDate);
-		theInfoRequest.setLocation(theLocation);
-		theModel.addAttribute("infoRequest", theInfoRequest);
-		
+		if(!theModel.containsAttribute("customer")) {
+			Customer theCustomer = new Customer();
+			theModel.addAttribute("customer", theCustomer);
+		}
+		if(!theModel.containsAttribute("infoRequest")) {
+			InfoRequest theInfoRequest = new InfoRequest();
+			LocalDate eventDate = LocalDate.now().plusMonths(1);
+			theInfoRequest.setEventDate(eventDate);
+			theInfoRequest.setLocation(theLocation);
+			theModel.addAttribute("infoRequest", theInfoRequest);
+		}
 		return "/catalog/location-details";
 	}
 	

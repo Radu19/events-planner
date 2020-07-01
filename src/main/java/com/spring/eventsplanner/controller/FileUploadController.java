@@ -48,10 +48,9 @@ public class FileUploadController {
 			RedirectAttributes redirectAttributes) throws IOException {
 
 		storageService.store(file);
-		System.out.println("...>>>>>>>"+file.toString());
 		redirectAttributes.addFlashAttribute("locationImg", file.getOriginalFilename());
 
-		String directoryString = "src/main/resources/static/img/docs";
+		String directoryString = "src/main/resources/static/img/locations";
 		File theFile = new File(directoryString, file.getOriginalFilename());
 		FileUtils.writeByteArrayToFile(theFile, file.getBytes());
 
@@ -63,10 +62,9 @@ public class FileUploadController {
 			RedirectAttributes redirectAttributes) throws IOException {
 
 		storageService.store(file);
-		System.out.println("...>>>>>>>"+file.toString());
 		redirectAttributes.addFlashAttribute("organizerImg", file.getOriginalFilename());
 
-		String directoryString = "src/main/resources/static/img/docs";
+		String directoryString = "src/main/resources/static/img/team";
 		File theFile = new File(directoryString, file.getOriginalFilename());
 		FileUtils.writeByteArrayToFile(theFile, file.getBytes());
 

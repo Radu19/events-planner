@@ -3,9 +3,12 @@ package com.spring.eventsplanner.controller;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,7 +42,13 @@ public class MeetingController {
 	private UserService userService;
 
 	@PostMapping("/process-customer")
-	public String processCustomer(@RequestParam("locationId") int locationId, @ModelAttribute("customer") Customer theCustomer, RedirectAttributes attributes) {
+	public String processCustomer(@RequestParam("locationId") int locationId,@Valid @ModelAttribute("customer") Customer theCustomer, BindingResult theBindingResult, RedirectAttributes attributes) {
+		
+		if(theBindingResult.hasErrors()) {
+			attributes.addFlashAttribute("org.springframework.validation.BindingResult.customer", theBindingResult);
+			attributes.addFlashAttribute("customer", theCustomer);
+			return "redirect:/catalog/details?locationId="+locationId;
+		}
 		
 		//process customer
 		if(customerService.isNew(theCustomer)) {

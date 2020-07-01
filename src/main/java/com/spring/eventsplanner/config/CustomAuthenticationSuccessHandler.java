@@ -17,8 +17,6 @@ import com.spring.eventsplanner.service.UserService;
 
 
 
-
-
 @Component
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
