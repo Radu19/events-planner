@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -17,6 +18,10 @@ import com.spring.eventsplanner.storage.StorageProperties;
 
 
 @Configuration
+@EnableGlobalMethodSecurity(
+		  prePostEnabled = true, 
+		  securedEnabled = true, 
+		  jsr250Enabled = true)
 @EnableWebSecurity
 public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -38,12 +43,10 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
 
 		http.authorizeRequests()
-		    .antMatchers("/").permitAll()// it will allow public access to index.html
+		    .antMatchers("/").permitAll()
 		    .antMatchers("/administration-dashboard").hasRole("EMPLOYEE")
 		    .antMatchers("/catalog/**").permitAll()
-			.antMatchers("/locations").hasRole("EMPLOYEE")
-//			.antMatchers("/leaders/**").hasRole("MANAGER")
-//			.antMatchers("/systems/**").hasRole("ADMIN")
+			.antMatchers("/locations/**").hasRole("EMPLOYEE")
 			.and()
 			.formLogin()
 				.loginPage("/administration")

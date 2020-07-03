@@ -2,6 +2,8 @@ package com.spring.eventsplanner.controller;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -62,6 +64,7 @@ public class LocationController {
 		return "redirect:/locations/list";
 	}
 	
+	@RolesAllowed("ROLE_ADMIN")
 	@GetMapping("/delete")
 	public String deleteLocation(@RequestParam("locationId") int theId) {
 		

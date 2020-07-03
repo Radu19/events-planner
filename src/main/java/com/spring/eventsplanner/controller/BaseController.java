@@ -49,7 +49,6 @@ public class BaseController {
 		//set date for contact
 		LocalDate eventDate = LocalDate.now().plusMonths(1);
 		Contact contact = new Contact();
-		contact.setEventDate(eventDate);
 		theModel.addAttribute("contact", contact);
 		return "index";
 	}

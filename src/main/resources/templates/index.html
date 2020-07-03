@@ -220,7 +220,7 @@
                     <div class="col-lg-4">
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" th:src="@{img/team/1.jpg}" alt="" />
-                            <h4>Kay Garland</h4>
+                            <h4>Susan Ashley</h4>
                             <p class="text-muted">Event Organizer</p>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
                         </div>
@@ -228,7 +228,7 @@
                     <div class="col-lg-4">
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" th:src="@{img/team/2.jpg}" alt="" />
-                            <h4>Larry Parker</h4>
+                            <h4>John Doe</h4>
                             <p class="text-muted">Event Organizer</p>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
                         </div>
@@ -236,7 +236,7 @@
                     <div class="col-lg-4">
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" th:src="@{img/team/3.jpg}" alt="" />
-                            <h4>Diana Petersen</h4>
+                            <h4>Mary Frank</h4>
                             <p class="text-muted">Event Organizer</p>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
                         </div>
@@ -275,7 +275,7 @@
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="form-group mb-md-0">
-                                <input class="form-control" th:field="*{eventDate}" autocomplete="off" th:value="${#temporals.format(eventDate, 'dd-MM-yyyy')}" id="event-date" type="text" placeholder="Event Date *" required="required" data-validation-required-message="Please enter the event date." />
+                                <input class="form-control" autocomplete="off" id="event-date" type="text" placeholder="Event Date *" required="required" data-validation-required-message="Please enter the event date." />
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -301,7 +301,7 @@
                     <div class="col-lg-4 my-3 my-lg-0">
                         <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
                     </div>
-                    <div class="col-lg-4 text-lg-right"><a class="mr-3" href="#!">Privacy Policy</a><a class="mr-3" href="#!">Terms of Use</a><a th:href="@{/login}">Login</a></div>
+                    <div class="col-lg-4 text-lg-right"><a class="mr-3" href="#!">Privacy Policy</a><a class="mr-3" href="#!">Terms of Use</a><a th:href="@{/administration}">Login</a></div>
                 </div>
             </div>
         </footer>

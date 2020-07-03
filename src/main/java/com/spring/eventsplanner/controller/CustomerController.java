@@ -2,6 +2,8 @@ package com.spring.eventsplanner.controller;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +30,7 @@ public class CustomerController {
 		return "/customers/customers-list";
 	}
 	
+	@RolesAllowed("ROLE_ADMIN")
 	@GetMapping("/delete")
 	public String deleteCustomer(@RequestParam("customerId") int customerId) {
 		

@@ -2,6 +2,7 @@ package com.spring.eventsplanner.controller;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,7 @@ public class InfoRequestController {
 		return "/info-requests/info-requests-list";
 	}
 	
+	@RolesAllowed("ROLE_ADMIN")
 	@GetMapping("/delete")
 	public String deleteInfoRequest(@RequestParam("infoRequestId") int infoRequestId) {
 		

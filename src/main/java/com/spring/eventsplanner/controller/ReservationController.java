@@ -3,6 +3,8 @@ package com.spring.eventsplanner.controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -88,6 +90,7 @@ public class ReservationController {
 		return "redirect:/reservation/list";
 	}
 	
+	@RolesAllowed("ROLE_ADMIN")
 	@GetMapping("/delete")
 	public String deleteReservation(@RequestParam("reservationId") int theId) {
 		

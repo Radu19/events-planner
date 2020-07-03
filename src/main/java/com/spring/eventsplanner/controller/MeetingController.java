@@ -3,6 +3,7 @@ package com.spring.eventsplanner.controller;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,14 +51,12 @@ public class MeetingController {
 			return "redirect:/catalog/details?locationId="+locationId;
 		}
 		
-		//process customer
 		if(customerService.isNew(theCustomer)) {
 			customerService.save(theCustomer);
 		}
 		theCustomer = customerService.findByEmail(theCustomer.getEmail());
 		int customerId = theCustomer.getId();
 		
-		//redirect customerId and locationId
 		attributes.addFlashAttribute("customerId", customerId);
 		
 		return "redirect:/meeting/book?locationId=" + locationId;
@@ -106,6 +105,7 @@ public class MeetingController {
 		return "/meetings/meetings-list";
 	}
 	
+	@RolesAllowed("ROLE_ADMIN")
 	@GetMapping("/delete")
 	public String deleteMeeting(@RequestParam("meetingId") int meetingId) {
 		
